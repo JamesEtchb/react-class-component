@@ -4,13 +4,16 @@ export default function FunctionalComponent() {
   const [count, setCount] = useState(0)
   const handleClick = () => setCount(count + 1)
 
-  const [coffeeList, setCoffeeList] = useState('')
+  const [coffeeList, setCoffeeList] = useState([])
 
   useEffect(() => {
-
+    getCoffeeSync()
   },[])
 
   const getCoffeeSync = async (temperature) => {
+    if (!temperature) {
+        temperature = "hot"
+    }
     try {
       const results = await fetch(
         `https://api.sampleapis.com/coffee/${temperature}`
@@ -29,10 +32,9 @@ export default function FunctionalComponent() {
       <button onClick={() => getCoffeeSync('hot')}>HOT</button>
       <button onClick={() => getCoffeeSync('iced')}>ICED</button>
       <h2>Coffee List</h2>
-      {!coffeeList ? (
-        <p>loading ...</p>
-      ) : (
-        coffeeList.map((coffee) => (
+      <>
+        {coffeeList.map((coffee) => (
+          
           <ui>
             <ui key={coffee.id}>
               <b>
@@ -43,8 +45,10 @@ export default function FunctionalComponent() {
             <li key={coffee.id}>{coffee.description}</li>
             <br />
           </ui>
-        ))
-      )}
+        
+        ))}
+      </>
+      
     </>
   )
 }
