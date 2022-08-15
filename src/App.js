@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './App.css'
 import FunctionalComponent from './FunctionalComponent.js'
 import ClassComponent from './ClassComponent'
+import FunctionalCompv2 from './FunctionalCompv2'
 
 let count = 1
 class App extends Component {
@@ -14,7 +15,8 @@ class App extends Component {
           <br />
           <FunctionalComponent count={count} />
           <br />
-          <ClassComponent count={count} />
+          <FunctionalCompv2 passCount={count}/>
+          {/* <ClassComponent count={count} /> */}
         </header>
       </div>
     )
