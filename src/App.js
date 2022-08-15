@@ -15,7 +15,7 @@ class App extends Component {
           <br />
           <FunctionalComponent count={count} />
           <br />
-          <FunctionalCompv2 passCount={count}/>
+          {/* <FunctionalCompv2 passCount={count}/> */}
           {/* <ClassComponent count={count} /> */}
         </header>
       </div>
